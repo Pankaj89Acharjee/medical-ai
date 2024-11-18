@@ -1,9 +1,9 @@
-import PatientForm from "@/components/forms/PatientForm";
-import Image from "next/image";
-import Link from "next/link";
+import RegisterForm from '@/components/forms/RegisterForm'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
-export default function Home() {
-  //Landing page
+const Register = () => {
   return (
     <div className="flex h-screen max-h-screen">
       {/* TODO: OTP Verification */}
@@ -15,7 +15,7 @@ export default function Home() {
             className="mb-12 h-14 w-fit"
           />
 
-          <PatientForm />
+          <RegisterForm />
 
           <div className="text-14-regular mt-20 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
@@ -29,12 +29,14 @@ export default function Home() {
       </section>
 
       <Image
-        src="/assets/images/onboarding-img.png"
+        src="/assets/images/register-img.png"
         alt="onboad"
         width={1000}
         height={1000}
-        className="side-img max-w-[50%] rounded-xl"
+        className="side-img max-w-[400px]"
       />
     </div>
-  );
+  )
 }
+
+export default Register
