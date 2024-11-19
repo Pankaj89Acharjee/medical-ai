@@ -16,6 +16,10 @@ import UserFormValidation from "@/lib/validation"
 import { createUser } from "@/app/api/userAPI"
 import { useRouter } from "next/navigation"
 import { v4 as uuidv4 } from 'uuid'
+import { RadioGroup } from "../ui/radio-group"
+import { GenderOptions } from "@/constants"
+import { RadioGroupItem } from "../ui/radio-group"
+import { Label } from "../ui/label"
 
 
 //For making input fields type available for reusable component
@@ -116,9 +120,28 @@ const RegisterForm = () => {
             control={form.control}
             name="gender"
             label="Gender"
-            renderSkeleton={(field) => (
+            renderSkeleton={(field: any) => (
               <FormControl>
-                
+                <RadioGroup className="flex h-11 gap-6 xl:justify-between"
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  {GenderOptions.map((option) => (
+                    <div key={option}
+                      className="radio-group"
+                    >
+                      <RadioGroupItem
+                        value={option}
+                        id={option}
+                      />
+                      <Label htmlFor={option}
+                        className="cursor-pointer"
+                      >
+                        {option}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
               </FormControl>
             )}
           />
