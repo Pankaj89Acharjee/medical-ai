@@ -83,12 +83,14 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
                         <DatePicker
                             selected={field.value}
                             onChange={(date) => field.onChange(date)}
-                            dateFormat={dateFormat ?? 'MM/dd/yyyy'}
+                            dateFormat={dateFormat ?? 'dd/MM/yyyy'}
                             showTimeSelect={showTimeSelect ?? false}
                             timeInputLabel="Time:"
                             wrapperClassName="date-picker"
                         />
+                       
                     </FormControl>
+                    <h5 className="textcenter text-xs px-2 py-4">DD/MM/YYYY</h5>
                 </div>
             )
         default:
