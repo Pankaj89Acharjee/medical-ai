@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import {
-  Form
+  Form,
+  FormControl
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import CustomFormField from "../CustomFormField"
@@ -14,7 +15,7 @@ import { use, useState } from "react"
 import UserFormValidation from "@/lib/validation"
 import { createUser } from "@/app/api/userAPI"
 import { useRouter } from "next/navigation"
-import { v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 
 //For making input fields type available for reusable component
@@ -57,7 +58,7 @@ const RegisterForm = () => {
 
       const user = await createUser(userData)
       console.log("User data callback", user)
-      if(user) router.push(`/patients/${user.data}/register`)
+      if (user) router.push(`/patients/${user.data}/register`)
 
     } catch (error) {
       console.log("Error in submit handler fx", error)
@@ -72,34 +73,73 @@ const RegisterForm = () => {
           <p className="text-dark-700">Get your health checkup</p>
         </section>
 
-        <CustomFormField
-          fieldType={FormFieldType.INPUT}
-          control={form.control}
-          name="name"
-          label="Full name"
-          placeholder="Pankaj Acharjee"
-          iconSrc="/assets/icons/user.svg"
-          iconAlt="user"
-        />
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="name"
+            label="Full name"
+            placeholder="Pankaj Acharjee"
+            iconSrc="/assets/icons/user.svg"
+            iconAlt="user"
+          />
 
-        <CustomFormField
-          fieldType={FormFieldType.INPUT}
-          control={form.control}
-          name="email"
-          label="Email"
-          placeholder="pankaj@gmail.com"
-          iconSrc="/assets/icons/email.svg"
-          iconAlt="email"
-        />
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="email"
+            label="Email"
+            placeholder="pankaj@gmail.com"
+            iconSrc="/assets/icons/email.svg"
+            iconAlt="email"
+          />
 
-        <CustomFormField
-          fieldType={FormFieldType.PHONE_INPUT}
-          control={form.control}
-          name="phone"
-          label="Mobile Number"
-          placeholder="919222333444"
-        />
+          <CustomFormField
+            fieldType={FormFieldType.PHONE_INPUT}
+            control={form.control}
+            name="phone"
+            label="Mobile Number"
+            placeholder="919222333444"
+          />
+        </div>
 
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            fieldType={FormFieldType.DATE_PICKER}
+            control={form.control}
+            name="birthDate"
+            label="Date of Birth"
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.SKELETON}
+            control={form.control}
+            name="gender"
+            label="Gender"
+            renderSkeleton={(field) => (
+              <FormControl>
+                
+              </FormControl>
+            )}
+          />
+
+        </div>
+
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+
+
+        </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+
+
+        </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+
+
+        </div>
         <SubmitButton isLoading={isLoading}>Lets start</SubmitButton>
       </form>
     </Form>
