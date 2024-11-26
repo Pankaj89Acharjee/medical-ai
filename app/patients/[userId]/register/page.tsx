@@ -6,9 +6,8 @@ import React from 'react'
 const Register = () => {
   return (
     <div className="flex h-screen max-h-screen">
-      {/* TODO: OTP Verification */}
-      <section className="remove-scrollbar container my-auto">
-        <div className="mx-w-[496px] sub-container">
+      <section className="remove-scrollbar container">
+        <div className="mx-w-[860px] sub-container flex-1 flex-col py-10">
           <Image src='/assets/icons/DWANNANTARI.png' alt="logo"
             height={1000}
             width={1000}
@@ -17,14 +16,10 @@ const Register = () => {
 
           <RegisterForm />
 
-          <div className="text-14-regular mt-20 flex justify-between">
-            <p className="justify-items-end text-dark-600 xl:text-left">
-              © 2024 Dhannwantari
-            </p>
-            <Link href='/?admin=true' className="text-green-500">
-              Admin
-            </Link>
-          </div>
+          <p className="copyright py-3">
+            © 2024 Dhannwantari
+          </p>
+
         </div>
       </section>
 
